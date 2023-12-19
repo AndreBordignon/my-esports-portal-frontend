@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // Substitua esta URL pela URL base real da API que você está usando
-const BASE_URL = 'http://localhost:4000/pandascore/';
+const BASE_URL = 'https://blooming-hollows-13183-117367e14a03.herokuapp.com/pandascore/';
 
 const api = axios.create({
     baseURL: BASE_URL,
