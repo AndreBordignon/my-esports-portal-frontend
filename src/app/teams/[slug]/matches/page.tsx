@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { getTeamMatches } from '@/services/teams.service'; // Ajuste o caminho conforme necessário
 import Image from 'next/image';
 import Link from 'next/link';
+import backgroundImage from '@/assets/background/download.png'
 const MatchesList = ({ params }: { params: { slug: string } }) => {
     const [series, setSeries] = useState<any>([]);
 
@@ -28,42 +29,46 @@ const MatchesList = ({ params }: { params: { slug: string } }) => {
     }
 
     return (
-        <div className="py-4 mx-auto my-auto">
+        <div className="mx-auto bg-black my-auto">
             <ul className="list-none mx-auto flex flex-col justify-center">
                 {series.map((serie: any, index: number) => (
                     serie.name && (
-                    <li key={index} className="p-4 justify-center border-b border-gray-200">
-                        {/* Substitua 'serie.name' pela propriedade correta do seu objeto de partida */}
-                        {/* <p className="text-lg font-semibold">{serie.name}</p> */}
-                        <div className='flex justify-center'>
-                            <div className='flex'>
-                                    <p className={`text-bold text-3xl ${serie.winner?.slug === serie.opponents[0]?.opponent?.slug ? 'text-green-500' : 'text-red-500'} my-auto`}>{serie.results[0].score}</p>
-                                <div className='flex flex-col'>
-                                    <Link href={{ pathname: `/teams/${serie?.opponents[0]?.opponent.slug}/matches`, query: { titulo: `Partidas ${serie?.opponents[0]?.opponent.name}`}}}>
-                                        <p className='text-bold text-center'>{serie?.opponents[0]?.opponent.name}</p>
-                                        <div className='flex flex-row'>
-                                            <Image className='rounded-full w-44 h-24 object-scale-down' src={`${serie.opponents[0]?.opponent.image_url || ''}`} width="120" height="120" alt="team 1"/>
-                                        </div>
-                                    </Link>
-                                </div>
-                                
-                                <p className='align-center justify-center my-auto mx-2'>vs</p>
+                    <>
+                        <li className={`relative p-4 my-2 bg-custom-background bg-cover justify-center border-b border-gray-200`}>
+                            {/* Substitua 'serie.name' pela propriedade correta do seu objeto de partida */}
+                            {/* <p className="text-lg font-semibold">{serie.name}</p> */}
+                            <div className="absolute inset-0 bg-black opacity-30"></div>
 
-                                <div>
-                                    <Link href={{ pathname: `/teams/${serie?.opponents[1]?.opponent.slug}/matches`, query: { titulo: `Partidas ${serie?.opponents[1]?.opponent.name}`}}}>
-                                        <p className='text-bold text-center m-auto'>{serie?.opponents[1]?.opponent.name}</p>
-                                        <div className='flex flex-row '>
-                                            <Image className='rounded-full w-44 h-24 object-scale-down' src={`${serie.opponents[1]?.opponent.image_url || ''}`} width="120" height="120" alt="team 2"/>
-                                        </div>
-                                    </Link>
+                            <div className='flex relative z-10 justify-center'>
+                                <div className='flex'>
+                                        <p className={`text-bold text-3xl ${serie.winner?.slug === serie.opponents[0]?.opponent?.slug ? 'text-green-500' : 'text-red-500'} my-auto`}>{serie.results[0].score}</p>
+                                    <div className='flex flex-col'>
+                                        <Link href={{ pathname: `/teams/${serie?.opponents[0]?.opponent.slug}/matches`, query: { titulo: `Partidas ${serie?.opponents[0]?.opponent.name}`}}}>
+                                            <p className='text-bold text-center'>{serie?.opponents[0]?.opponent.name}</p>
+                                            <div className='flex flex-row'>
+                                                <Image className='rounded-full w-44 h-24 object-scale-down' src={`${serie.opponents[0]?.opponent.image_url || ''}`} width="120" height="120" alt="team 1"/>
+                                            </div>
+                                        </Link>
+                                    </div>
+                                    
+                                    <p className='align-center justify-center m-auto mx-2'>vs</p>
+
+                                    <div>
+                                        <Link href={{ pathname: `/teams/${serie?.opponents[1]?.opponent.slug}/matches`, query: { titulo: `Partidas ${serie?.opponents[1]?.opponent.name}`}}}>
+                                            <p className='text-bold text-center'>{serie?.opponents[1]?.opponent.name}</p>
+                                            <div className='flex flex-row '>
+                                                <Image className='rounded-full w-44 h-24 object-scale-down' src={`${serie.opponents[1]?.opponent.image_url || ''}`} width="120" height="120" alt="team 2"/>
+                                            </div>
+                                        </Link>
+                                    </div>
+                                        <p className={`text-bold text-3xl ${serie.winner?.slug === serie.opponents[1]?.opponent?.slug ? 'text-green-500' : 'text-red-500'} my-auto`}>{serie.results[1].score}</p>
+                                        <Link className="py-2 absolute right-20 px-4 border-2 rounded-md bg-blue-600 border-blue-600 text-white my-8" href={`/matches/${serie.slug}/details`}>
+                                            detalhes -&gt;
+                                        </Link>
                                 </div>
-                                    <p className={`text-bold text-3xl ${serie.winner?.slug === serie.opponents[1]?.opponent?.slug ? 'text-green-500' : 'text-red-500'} my-auto`}>{serie.results[1].score}</p>
-                                    <Link className="py-2 absolute right-20 px-4 border-2 rounded-md bg-blue-600 border-blue-600 text-white my-8" href={`/matches/${series.slug}/details`}>
-                                        detalhes -&gt;
-                                    </Link>
                             </div>
-                        </div>
-                    </li>
+                        </li>
+                    </>
                     )
                 ))}
             </ul>

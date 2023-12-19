@@ -4,7 +4,7 @@ const nextConfig = {
         domains: [
           "cdn.pandascore.co",
           "dummyimage.com"
-        ],
+        ],  
       },
 }
 
