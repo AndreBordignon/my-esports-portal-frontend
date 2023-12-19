@@ -26,7 +26,7 @@ const getTeamMatches = async (teamSlug: string) => {
         const response = await api.get(`/teams/${teamSlug}/matches`)
         return response.data
     } catch(error) {
-        console.error('Ocorreu um arro ao listar as partidas', error);
+        console.error('Ocorreu um arro ao listar as bo3', error);
         throw error;
     }
 }
