@@ -2,7 +2,8 @@
 
 import React, { useState, useEffect } from 'react';
 import { getTeams } from '@/services/teams.service';
-import Image from 'next/image'
+import Image from 'next/image';
+import Link from 'next/link';
 import ReactCountryFlag from "react-country-flag";
 import TeamSearch from './teamSearch/teamSearch';
 import useDebounce from '../../../hooks/useDebounce';
@@ -28,20 +29,20 @@ const TeamsPage = () => {
 
         fetchTeams();
     }, [debouncedSearchTerm]);
+
     const handleSearch = (searchTerm: any) => {
       setSearchTerm(searchTerm);
   };
     return (
       <div className="container py-4 mx-auto my-auto">
-          <h1 className="text-2xl font-bold mb-4">Lista de Times</h1>
           <TeamSearch onSearch={handleSearch} />
           {loading ? (
             <p>Carregando...</p>
           ) : (
-            <div className='h-fit flex flex-wrap gap-4'>
+            <div className='h-fit flex flex-wrap justify-center'>
               {teams.map((team: any, index: number) => (
                   team.players.length > 0 &&
-                  <div key={index} className="w-48 rounded-lg h-80 my-4 border-2 flex p-3 flex-col p-2">
+                  <Link href={{ pathname: `/teams/${team.slug}/matches`, query: { titulo: `Partidas ${team.name}` }}} key={index} className="w-48 shadow-md mr-4 rounded-lg h-80 my-4 border-2 flex p-3 flex-col p-2">
                       <Image className="rounded-full w-44 h-24 mx-auto object-scale-down" src={team?.image_url || 'https://dummyimage.com/500x500/000/ffffff.png&text=not+found'} width="100" height="100" alt="logo do time" />
                       <p className="text-center text-black my-4">
                           {team.name}
@@ -65,7 +66,7 @@ const TeamsPage = () => {
                           </li>
                         )}
                       </ul>
-                  </div>
+                  </Link>
               ))}
           </div>
           )}
