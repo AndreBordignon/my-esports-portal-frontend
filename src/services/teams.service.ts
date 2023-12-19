@@ -2,7 +2,7 @@ import api from '@/api/api'; // Ajuste o caminho conforme a localização do seu
 
 const getTeams = async (searchTerm: any) => {
     try {
-        const response = await api.get('/teams', {
+        const response = await api.get('teams', {
             params: {
                 filter: {
                     videogame_id: 3,
