@@ -20,7 +20,7 @@ const Header = ({ defaultTitle }: any) => {
 
     return (
         <div className='fixed z-20 w-full h-18 bg-bg shadow-md'>
-            <div className="flex justify-between mx-auto pl-2 pr-6 container items-center py-4">
+            <div className="flex justify-between md:mx-auto pl-2 pr-2 md:pr-6 container items-center py-4">
                 <div className="flex items-center">
                     <button onClick={goBack} className="px-4 py-2 bg-secondary text-white rounded hover:bg-button">
                         {'<-'}
