@@ -32,7 +32,7 @@ const getTeamMatches = async (teamSlug: string) => {
 }
 const getTeamBySlug = async (teamSlug: string) => {
     try{
-        const response = await pandascoreapi.get(`/teams/${teamSlug}`)
+        const response = await api.get(`/teams/${teamSlug}`)
         return response.data
     } catch(error) {
         console.error('Ocorreu um arro ao listar as bo3', error);
