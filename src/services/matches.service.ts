@@ -1,4 +1,4 @@
-import api from '@/api/api'; // Ajuste o caminho conforme a localização do seu arquivo api.ts
+import {api, pandascoreapi} from '@/api/api'; // Ajuste o caminho conforme a localização do seu arquivo api.ts
 
 
 const getMatchDetails = async (teamSlug: string) => {

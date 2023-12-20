@@ -46,7 +46,7 @@ const TeamsPage = () => {
                   <div className='h-fit flex flex-wrap mx-2'>
                     {teams.length > 0 ? teams.map((team: any, index: number) => (
                         team.players.length > 0 &&
-                        <Link href={{ pathname: `/teams/${team.slug}/matches`, query: { titulo: `Partidas ${team.name}` }}} key={index} className="w-72 shadow-lg mx-auto md:mx-0 md:mr-4 rounded-lg h-80 my-4 border-2 border-border flex p-3 flex-col">
+                        <Link href={{ pathname: `/teams/${team.slug}/details`, query: { titulo: `Partidas ${team.name}` }}} key={index} className="w-72 shadow-lg mx-auto md:mx-0 md:mr-4 rounded-lg h-80 my-4 border-2 border-border flex p-3 flex-col">
                             <Image className="rounded-full w-44 h-24 mx-auto object-scale-down" src={team?.image_url || 'https://dummyimage.com/500x500/000/ffffff.png&text=not+found'} width="100" height="100" alt="logo do time" />
                             <p className="text-center text-black my-4">
                                 {team.name}
