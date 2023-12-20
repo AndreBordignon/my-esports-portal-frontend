@@ -18,6 +18,13 @@ const config: Config = {
         'custom-background': "url('/assets/background/CS2.png')",
 
       },
+      colors: {
+        'primary': '#1c0f13',
+        'secondary': '#06908f',
+        'bg': '#E2E2E2',
+        'button': '#0892a5',
+        'border': '#C9C9C9'
+      }
     },
   },
   plugins: [],
