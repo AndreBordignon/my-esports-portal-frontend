@@ -1,4 +1,4 @@
-import api from '@/api/api'; // Ajuste o caminho conforme a localização do seu arquivo api.ts
+import {api, pandascoreapi} from '@/api/api'; // Ajuste o caminho conforme a localização do seu arquivo api.ts
 
 const getTeams = async (searchTerm: any) => {
     try {
@@ -30,4 +30,13 @@ const getTeamMatches = async (teamSlug: string) => {
         throw error;
     }
 }
-export { getTeams, getTeamMatches };
+const getTeamBySlug = async (teamSlug: string) => {
+    try{
+        const response = await pandascoreapi.get(`/teams/${teamSlug}`)
+        return response.data
+    } catch(error) {
+        console.error('Ocorreu um arro ao listar as bo3', error);
+        throw error;
+    }
+}
+export { getTeams, getTeamMatches, getTeamBySlug };

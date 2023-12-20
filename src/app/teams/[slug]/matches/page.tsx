@@ -33,10 +33,10 @@ const MatchesList = ({ params }: { params: { slug: string } }) => {
 
     return (
         <div className="mx-auto bg-bg my-auto">
-            <ul className="list-none my-4 mx-auto flex flex-col justify-center">
+            <ul className="list-none my-0 md:my-4 mx-auto flex flex-col justify-center">
                 {series.map((serie: any, index: number) => (
                     serie.name && (
-                        <li key={`${serie + index}`} className={`relative p-4 my-0 md:my-2 bg-transparent md:bg-custom-background bg-cover justify-center border-y-2 md:border-none border-blue-700`}>
+                        <li key={`${serie + index}`} className={`relative p-4 my-0 md:my-2 bg-transparent md:bg-custom-background bg-cover justify-center border-t-2 md:border-none border-blue-700`}>
 
                             <div className="hidden md:block absolute inset-0 bg-black opacity-30"></div>
                             <Link  href={`/matches/${serie.slug}/details`}>
@@ -47,7 +47,7 @@ const MatchesList = ({ params }: { params: { slug: string } }) => {
                                     <div className='flex'>
                                         <p className={`text-bold text-3xl ${serie.winner?.slug === serie.opponents[0]?.opponent?.slug ? 'text-green-500' : 'text-red-500'} my-auto`}>{serie.results[0].score}</p>
                                         <div className='flex flex-col'>
-                                            <Link href={{ pathname: `/teams/${serie?.opponents[0]?.opponent.slug}/matches`, query: { titulo: `Partidas ${serie?.opponents[0]?.opponent.name}`}}}>
+                                            <Link href={{ pathname: `/teams/${serie?.opponents[0]?.opponent.slug}/details`, query: { titulo: `Time ${serie?.opponents[0]?.opponent.name}`}}}>
                                                 <p className='text-bold text-center'>{serie?.opponents[0]?.opponent.name}</p>
                                                 <div className='flex flex-row'>
                                                     <Image className='rounded-full w-44 h-24 object-scale-down' src={`${serie.opponents[0]?.opponent.image_url || ''}`} width="120" height="120" alt="team 1"/>
@@ -58,7 +58,7 @@ const MatchesList = ({ params }: { params: { slug: string } }) => {
                                         <p className='align-center justify-center m-auto mx-2'>vs</p>
 
                                         <div>
-                                            <Link href={{ pathname: `/teams/${serie?.opponents[1]?.opponent.slug}/matches`, query: { titulo: `Partidas ${serie?.opponents[1]?.opponent.name}`}}}>
+                                            <Link href={{ pathname: `/teams/${serie?.opponents[1]?.opponent.slug}/details`, query: { titulo: `Time ${serie?.opponents[1]?.opponent.name}`}}}>
                                                 <p className='text-bold text-center'>{serie?.opponents[1]?.opponent.name}</p>
                                                 <div className='flex flex-row '>
                                                     <Image className='rounded-full w-44 h-24 object-scale-down' src={`${serie.opponents[1]?.opponent.image_url || ''}`} width="120" height="120" alt="team 2"/>
