@@ -31,7 +31,7 @@ const Header = ({ defaultTitle }: any) => {
           </button>
           <h1 className="ml-4 text-lg text-gray-600 font-bold">{title}</h1>
         </div>
-        <Image src={logo} />
+        <Image src={logo} alt="codence logo" />
 
         <Link
           href={{ pathname: "/", query: { titulo: "Lista de times" } }}
